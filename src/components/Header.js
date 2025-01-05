@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Header.css'; // Asegúrate de tener un archivo CSS asociado.
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="/">NeoLux Store</a>
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <a className="nav-link" href="/">Inicio</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/productos">Productos</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/contacto">Contacto</a>
-          </li>
+    <header className="header">
+      <div className="logo">NeoLux Store</div>
+      <button className="menu-toggle" onClick={toggleMenu}>
+        ☰
+      </button>
+      <nav className={`nav-menu ${isOpen ? 'open' : ''}`}>
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/productos">Productos</a></li>
+          <li><a href="/contacto">Contacto</a></li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 };
 
