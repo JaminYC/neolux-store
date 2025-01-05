@@ -1,11 +1,22 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ProductList from './components/ProductList';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
 
 const App = () => {
   return (
-    <div>
-      <h1>Bienvenido a NeoLux</h1>
-      <p>Tu plataforma para grabados y cortes láser.</p>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/productos" element={<ProductList />} />
+        <Route path="/contacto" element={<Contact />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 };
 
